@@ -1,0 +1,6 @@
+asterisk-codec-g729 (1.0.0) unstable; urgency=medium
+
+  * Initial release: G.729 <-> slin transcoder module for Asterisk 21/22,
+    built on the bundled bcg729 static library.
+
+ -- Ioan Mario <ioanmario99@gmail.com>  Mon, 15 Jun 2026 12:00:00 +0000

@@ -1,0 +1,20 @@
+# Build output
+*.o
+*.so
+codec_g729.so
+third_party/bcg729/build/
+
+# Debian packaging artifacts
+debian/.debhelper/
+debian/files
+debian/debhelper-build-stamp
+debian/asterisk-codec-g729/
+debian/asterisk-codec-g729.substvars
+debian/asterisk-codec-g729.*.debhelper
+*.deb
+*.buildinfo
+*.changes
+
+# Editor / OS noise
+*.swp
+.DS_Store

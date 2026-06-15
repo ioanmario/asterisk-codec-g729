@@ -1,0 +1,23 @@
+Source: asterisk-codec-g729
+Section: comm
+Priority: optional
+Maintainer: Ioan Mario <ioanmario99@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+               cmake,
+               pkg-config,
+               asterisk-dev
+Standards-Version: 4.6.2
+Homepage: https://github.com/ioanmario/asterisk-codec-g729
+Rules-Requires-Root: no
+
+Package: asterisk-codec-g729
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, asterisk
+Description: G.729 transcoder module for Asterisk (bcg729)
+ Plug-and-play G.729 <-> slin codec module for Asterisk 21/22, built on the
+ Belledonne bcg729 library.
+ .
+ Registering the g729<->slin translators lets Asterisk transcode between G.729
+ and any PCM-based codec (PCMU/PCMA/GSM/...) through its slin pivot, e.g.
+ (g729@8000)->(slin@8000)->(ulaw@8000). bcg729 is linked statically, so no
+ separate library package is required.

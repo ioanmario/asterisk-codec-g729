@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+# Build codec_g729.so and stage it into the Debian package tree.
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(MAKE)
+
+override_dh_auto_install:
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/asterisk-codec-g729
+
+override_dh_auto_clean:
+	$(MAKE) distclean

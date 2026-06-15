@@ -1,0 +1,65 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake pkg-config asterisk-dev
+
+      - name: Build module
+        run: make
+
+      - name: Verify artifact
+        run: |
+          test -f codec_g729.so
+          file codec_g729.so
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: codec_g729.so
+          path: codec_g729.so
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake pkg-config asterisk-dev \
+            debhelper devscripts
+
+      - name: Build .deb
+        run: dpkg-buildpackage -us -uc -b
+
+      - name: Collect package
+        run: |
+          mkdir -p dist
+          cp ../*.deb dist/ || true
+
+      - name: Upload .deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: asterisk-codec-g729-deb
+          path: dist/*.deb

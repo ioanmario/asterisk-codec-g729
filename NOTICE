@@ -1,0 +1,20 @@
+asterisk-codec-g729
+===================
+
+This product (the codec_g729.so Asterisk module, source in src/) is licensed
+under the GNU General Public License, version 2 (see LICENSE).
+
+It links against the bcg729 library, included as a git submodule under
+third_party/bcg729:
+
+    bcg729 - Copyright (C) Belledonne Communications
+    Licensed under the GNU General Public License, version 3 or later.
+    https://github.com/BelledonneCommunications/bcg729
+
+bcg729 implements the ITU-T G.729 Annex A/B speech codec. The relevant G.729
+patents have expired, so distribution and use of a software G.729 codec is no
+longer encumbered in most jurisdictions; verify the situation in yours if in
+doubt.
+
+This module is an independent work and is not affiliated with or endorsed by
+Belledonne Communications, Sangoma, or the Asterisk project.

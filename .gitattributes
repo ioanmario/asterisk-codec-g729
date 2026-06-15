@@ -1,0 +1,14 @@
+# Force LF on everything that must run on Linux (shell, make, C, CI, packaging).
+# Prevents CRLF from breaking shebangs and Makefile/debian/rules tabs when the
+# repo is cloned on the Asterisk build box.
+* text=auto eol=lf
+
+*.sh        text eol=lf
+Makefile    text eol=lf
+*.mk        text eol=lf
+*.c         text eol=lf
+*.h         text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+Dockerfile  text eol=lf
+debian/rules text eol=lf
